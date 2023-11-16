@@ -1,7 +1,7 @@
 # completed-forms
 Web-приложение для определения заполненных форм.
 
-
+Стек: FastApi, MongoDB
 
 # Запуск проекта без docker
 
