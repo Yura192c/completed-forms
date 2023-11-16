@@ -1,6 +1,9 @@
 from pymongo import MongoClient
+import os
 
-client = MongoClient("mongodb://mongodb:27017")
+host = os.environ.get('MONGODB_HOST', 'localhost')
+port = os.environ.get('MONGODB_PORT','27017')
+client = MongoClient(f"mongodb://{host}:{port}")
 
 try:
     client.admin.command('ping')
