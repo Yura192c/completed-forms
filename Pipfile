@@ -8,6 +8,8 @@ fastapi = "*"
 pymongo = "*"
 uvicorn = "*"
 httpx = "*"
+motor = "*"
+pydantic-settings = "*"
 
 [dev-packages]
 
