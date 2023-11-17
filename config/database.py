@@ -1,16 +1,12 @@
-from pymongo import MongoClient
-import os
+from motor.motor_asyncio import AsyncIOMotorClient
 
-host = os.environ.get('MONGODB_HOST', 'localhost')
-port = os.environ.get('MONGODB_PORT','27017')
-client = MongoClient(f"mongodb://{host}:{port}")
+from config.settings import settings_db as config
+
+async_client = AsyncIOMotorClient(config.database_url)
 
 try:
-    client.admin.command('ping')
-    print("Pinged your deployment. You successfully connected to MongoDB!")
-    db = client.foms_db
-    collection = db["form_templates"]
-
+    async_db = async_client[config.MONGODB_NAME]
+    async_collection = async_db[config.MONGODB_COLLECTION]
 except Exception as e:
     print("Connection to database error")
     print(e)
