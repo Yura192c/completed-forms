@@ -3,6 +3,13 @@ import re
 
 
 def is_valid_date(date_str):
+    """
+    Проверяет, является ли переданная строка корректной датой.
+
+    :param date_str: Строка, представляющая дату.
+    :return: True, если дата корректна, иначе False.
+    """
+
     formats = ['%d.%m.%Y', '%Y-%m-%d']
 
     for fmt in formats:
@@ -14,7 +21,13 @@ def is_valid_date(date_str):
 
 
 def is_valid_phone_number(phone_str):
-    # Определение паттерна для номера телефона "+7 xxx xxx xx xx"
+    """
+    Проверяет, является ли переданная строка номером телефона.
+
+    :param phone_str: Строка, представляющая номер телефона.
+    :return: True, если номер корректный, иначе False.
+    """
+
     pattern = re.compile(r'^\+7 \d{3} \d{3} \d{2} \d{2}$')
     return bool(pattern.match(phone_str))
 
