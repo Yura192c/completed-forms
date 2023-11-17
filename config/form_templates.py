@@ -1,7 +1,7 @@
-from config.database import collection
+from config.database import async_collection
 
 
-def add_templates():
+async def add_templates():
     templates = [
         {
             "name": "User registration form",
@@ -18,9 +18,9 @@ def add_templates():
     ]
 
     for template in templates:
-        existing_template = collection.find_one({"name": template["name"]})
+        existing_template = await async_collection.find_one({"name": template["name"]})
         if existing_template is None:
             print('Template added')
-            collection.insert_one(template)
+            async_collection.insert_one(template)
         else:
             print('The template has already been added')
